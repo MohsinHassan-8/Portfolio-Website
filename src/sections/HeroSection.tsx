@@ -23,6 +23,7 @@ export default function HeroSection() {
         as="nav"
         delay={0}
         y={-20}
+        mountOnly
         className="flex items-center justify-between px-4 sm:px-6 md:px-10 pt-5 sm:pt-6 md:pt-8"
       >
         <div className="flex gap-3 sm:gap-6 md:gap-10">
@@ -49,7 +50,7 @@ export default function HeroSection() {
 
       <div className="flex-1 flex flex-col justify-center relative">
         <div className="overflow-hidden">
-          <FadeIn delay={0.15} y={40}>
+          <FadeIn delay={0.15} y={40} mountOnly>
             <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-center text-[10vw] sm:text-[9.5vw] md:text-[9vw] lg:text-[8.5vw]">
               Hi, i&apos;m mohsin
             </h1>
@@ -58,7 +59,7 @@ export default function HeroSection() {
       </div>
 
       <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 relative z-20">
-        <FadeIn delay={0.35} y={20}>
+        <FadeIn delay={0.35} y={20} mountOnly>
           <p
             className="text-[#EDE7DA] font-light uppercase tracking-wide leading-snug max-w-[180px] sm:max-w-[240px] md:max-w-[300px]"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
@@ -66,7 +67,7 @@ export default function HeroSection() {
             an ai/ml engineer building rag systems, fine-tuned llms, and deep learning solutions that ship
           </p>
         </FadeIn>
-        <FadeIn delay={0.5} y={20}>
+        <FadeIn delay={0.5} y={20} mountOnly>
           <ContactButton />
         </FadeIn>
       </div>
