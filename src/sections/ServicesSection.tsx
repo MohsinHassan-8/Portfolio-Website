@@ -23,13 +23,13 @@ const SERVICES = [
     number: '04',
     name: 'Retrieval-Augmented Generation (RAG)',
     description:
-      'Designing and deploying RAG chatbots and document Q&A systems with grounded, cited answers -- built with LangChain, vector databases, and production deployment pipelines.',
+      'Designing and deploying RAG chatbots and document Q&A systems with grounded, cited answers. Built with LangChain, vector databases, and production deployment pipelines.',
   },
   {
     number: '05',
     name: 'Full-Stack AI Deployment',
     description:
-      'Shipping complete AI products, not just models -- FastAPI backends, Docker containers, cloud deployment (AWS, Hugging Face Spaces), and clean web interfaces.',
+      'Shipping complete AI products, not just models. FastAPI backends, Docker containers, cloud deployment (AWS, Hugging Face Spaces), and clean web interfaces.',
   },
 ];
 

@@ -4,7 +4,7 @@ import AnimatedText from '../components/AnimatedText';
 import ContactButton from '../components/ContactButton';
 
 const ABOUT_TEXT =
-  "I'm a computer science graduate specializing in generative AI and machine learning, I build end-to-end systems: from fine-tuned transformer models to retrieval-augmented chatbots deployed in production. My final year project, veritas, was a large-scale comparative study across nearly every embedding technique in nlp. Let's build something intelligent together!";
+  "I'm a computer science graduate specializing in generative AI and machine learning, I build end-to-end systems: from fine-tuned transformer models to retrieval-augmented chatbots deployed in production. My final year project, VERITAS, was a large-scale comparative study across nearly every embedding technique in NLP. Let's build something intelligent together!";
 
 export default function AboutSection() {
   return (

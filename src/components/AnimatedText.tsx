@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, Fragment } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface AnimatedTextProps {
@@ -14,15 +14,36 @@ export default function AnimatedText({ text, className = '', style }: AnimatedTe
     offset: ['start 0.8', 'end 0.2'],
   });
 
-  const characters = text.split('');
+  const totalLength = text.length;
+  const words = text.split(' ');
+
+  // Running index over the *original* string (including spaces) so each
+  // character's scroll-reveal timing matches its true position in the text.
+  let globalIndex = 0;
 
   return (
     <p ref={ref} className={className} style={style}>
-      {characters.map((char, i) => {
-        const start = i / characters.length;
-        const end = start + 1 / characters.length;
+      {words.map((word, wi) => {
+        const chars = word.split('').map((char, ci) => {
+          const i = globalIndex;
+          globalIndex += 1;
+          const start = i / totalLength;
+          const end = start + 1 / totalLength;
+          return <Character key={ci} char={char} progress={scrollYProgress} start={start} end={end} />;
+        });
+
+        // Consume the index position for the space that followed this word.
+        if (wi < words.length - 1) {
+          globalIndex += 1;
+        }
+
         return (
-          <Character key={i} char={char} progress={scrollYProgress} start={start} end={end} />
+          <Fragment key={wi}>
+            {/* whiteSpace: 'nowrap' keeps every letter of a word glued together,
+                so the browser can only wrap the line at the real space below. */}
+            <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>{chars}</span>
+            {wi < words.length - 1 ? ' ' : null}
+          </Fragment>
         );
       })}
     </p>
@@ -44,10 +65,8 @@ function Character({
 
   return (
     <span style={{ position: 'relative', display: 'inline-block' }}>
-      <span style={{ visibility: 'hidden' }}>{char === ' ' ? '\u00A0' : char}</span>
-      <motion.span style={{ position: 'absolute', left: 0, top: 0, opacity }}>
-        {char === ' ' ? '\u00A0' : char}
-      </motion.span>
+      <span style={{ visibility: 'hidden' }}>{char}</span>
+      <motion.span style={{ position: 'absolute', left: 0, top: 0, opacity }}>{char}</motion.span>
     </span>
   );
 }
